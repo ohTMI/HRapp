@@ -21,7 +21,15 @@ def window_max(data: list, n: int) -> list:
     return maximums
 
 def window_average(data: list, n: int) -> list:
-    
+    """
+    Calculate average value of every "n"-size window
+
+    Args:
+        data (list[int]): list of integers representing heart rate samples
+        n (int): The size of your window
+    Returns:
+        list[int]: list of average from each window (size should be len(data)//6)
+    """  
     average = []
 
     if len(data) == 0 or n == 0:
@@ -34,7 +42,15 @@ def window_average(data: list, n: int) -> list:
     return average   
 
 def window_stddev(data: list, n: int) -> list:
-    
+    """
+    Calculate stddev value of every "n"-size window
+
+    Args:
+        data (list[int]): list of integers representing heart rate samples
+        n (int): The size of your window
+    Returns:
+        list[int]: list of stddev from each window (size should be len(data)//6)
+    """
     stddev = []
 
     if len(data) == 0 or n == 0:

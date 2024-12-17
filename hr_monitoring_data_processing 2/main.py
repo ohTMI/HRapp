@@ -38,6 +38,7 @@ def run(filename: str) -> None:
     file = open(filename)
     for line in file:
         data.append(line)
+    file.close()    
 
     # filter out a;; non-digits
     data = filter_nondigits(data)
@@ -46,12 +47,23 @@ def run(filename: str) -> None:
     data = filter_outliers(data)
 
     # calc window_max, window_average, window_sttdev
-    window_max(data, 6)
-    window_average(data, 6)
-    window_stddev(data, 6)
+    rolling_max = window_max(data, 6)
+    rolling_average = window_average(data, 6)
+    rolling_stddev = window_stddev(data, 6)
+
+    # save the plots 
+    plt.plot(rolling_max)
+    plt.savefig("images/maximums.png")
+    plt.close()
+    plt.plot(rolling_average)
+    plt.savefig("images/average.png")
+    plt.close()
+    plt.plot(rolling_stddev)
+    plt.savefig("images/stddev.png")
+    plt.close
 
     # return all 3 lists
-    return window_max, window_average, window_stddev
+    return rolling_max, rolling_average, rolling_stddev
 
 
 if __name__ == "__main__":
