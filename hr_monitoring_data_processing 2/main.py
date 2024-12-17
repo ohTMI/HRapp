@@ -41,16 +41,17 @@ def run(filename: str) -> None:
 
     # filter out a;; non-digits
     data = filter_nondigits(data)
-    print(data)
-
+    
     # filter out all outliers
     data = filter_outliers(data)
-    print(data)
 
     # calc window_max, window_average, window_sttdev
+    window_max(data, 6)
+    window_average(data, 6)
+    window_stddev(data, 6)
 
     # return all 3 lists
-    
+    return window_max, window_average, window_stddev
 
 
 if __name__ == "__main__":
